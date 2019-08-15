@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(ExchangeController.PATH)
 public class ExchangeController {
 
-    static final String PATH = "/exchanges";
+    static final String PATH = "/currency-exchange";
 
     @Autowired
     private ExchageService exchageService;

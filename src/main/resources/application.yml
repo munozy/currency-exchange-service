@@ -23,4 +23,4 @@ logging:
 
 server:
   port: 8000
-  servlet.context-path: /currency-exchange-service
+  servlet.context-path: /
