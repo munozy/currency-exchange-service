@@ -8,6 +8,8 @@ import org.munozy.microservices.demo.currencyexchangeservice.dto.ExchangeDto;
 import org.munozy.microservices.demo.currencyexchangeservice.exception.ResourceNotFoundException;
 import org.munozy.microservices.demo.currencyexchangeservice.mapper.ExchangeMapper;
 import org.munozy.microservices.demo.currencyexchangeservice.repository.ExchangeRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ExchageService {
 
+    static final Logger LOGGER = LoggerFactory.getLogger(ExchageService.class);
    final ExchangeRepository exchangeRepository;
 
    final ExchangeMapper exchangeMapper;
@@ -30,6 +33,8 @@ public class ExchageService {
 
         ExchangeDto exchangeDto = exchangeMapper.toExchangeDto(exchange);
         exchangeDto.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
+
+        LOGGER.info("{}", exchangeDto);
 
         return exchangeDto;
     }
